@@ -1,0 +1,10 @@
+@media screen and (max-width:600px) {
+    .selecao{
+        padding:10px;
+        color: white;
+    }
+
+    .selecao img{
+        height: 100px;
+    }
+}
