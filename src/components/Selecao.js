@@ -2,6 +2,8 @@ import React from 'react'
 import './Selecao.css'
 import inglaterra from '../inglaterra.png'
 import brasil from '../brasil.png'
+import alemanha from '../alemanha.png'
+import croacia from '../croacia.png'
 
 const Selecao = ({pickedCategory}) => {
   return (
@@ -13,6 +15,13 @@ const Selecao = ({pickedCategory}) => {
         }
         {pickedCategory === 'Brasil' && 
             <img src={brasil} />
+        }
+        {pickedCategory === 'Alemanha' && 
+            <img src={alemanha} />
+        }
+        {
+          pickedCategory === 'Croácia' &&
+          <img src={croacia} />
         }
     </div>
   )

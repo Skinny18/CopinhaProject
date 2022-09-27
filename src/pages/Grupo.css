@@ -1,0 +1,10 @@
+@media screen and (max-width:600px) {
+    .group{
+        color: white;
+    }
+    .group span{
+        text-align: center;
+        color: white;
+        padding: 10px;
+    }
+}
