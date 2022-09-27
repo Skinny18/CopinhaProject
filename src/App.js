@@ -21,7 +21,17 @@ function App() {
   const[group7, setGroup7] = useState([])
   const[group8, setGroup8] = useState([])
 
+  const[time, setTime] = useState("")
+  const[time2, setTime2] = useState("")
+  const[time3, setTime3] = useState("")
+  const[time4, setTime4] = useState("")
+  const[time5, setTime5] = useState("")
+  const[time6, setTime6] = useState("")
+  const[time7, setTime7] = useState("")
+  const[time8, setTime8] = useState("")
 
+
+  const[show, setShow] = useState(true)
   const[count, setCount] = useState(0)
 
   const [words] = useState(playerList)
@@ -81,25 +91,54 @@ function App() {
   const countChange = (e) => {
     e.preventDefault()
     setCount(0)
+    setShow(true)
 
   }
 useEffect(() => {
   if(count === 1){
     setGroup([pickedPlayer1, pickedPlayer2])
+    setTime(pickedCategory)
   }
 
   if(count === 2){
     setGroup2([pickedPlayer1, pickedPlayer2])
+    setTime2(pickedCategory)
   }
 
   if(count === 3){
     setGroup3([pickedPlayer1, pickedPlayer2])
+    setTime3(pickedCategory)
   }
 
-  console.log(group)
-  console.log(group2)
+  if(count === 4){
+    setGroup4([pickedPlayer1, pickedPlayer2])
+    setTime4(pickedCategory)
+  }
+  if(count === 5){
+    setGroup5([pickedPlayer1, pickedPlayer2])
+    setTime5(pickedCategory)
+  }
+  if(count === 6){
+    setGroup6([pickedPlayer1, pickedPlayer2])
+    setTime5(pickedCategory)
+  }
+
+  if(count === 7){
+    setGroup7([pickedPlayer1, pickedPlayer2])
+    setTime6(pickedCategory)
+  }
+
+  if(count === 8 ){
+    setGroup8([pickedPlayer1, pickedPlayer2])
+    setTime8(pickedCategory)
+  }
 }
 )
+useEffect(() => { 
+  if(count === 8 ){
+    setShow(false)
+  }
+})
   return (
     <div className="App">
       
@@ -109,17 +148,33 @@ useEffect(() => {
       {count != 8 && <form onSubmit={handleChange}>
         <input type="submit" value="Sortear"  />
       </form>}
-      {count === 8 && <form onSubmit={countChange}>
+      {show === false && <form onSubmit={countChange}>
           <input type="submit" value="Resetar"/>
-        </form>}
-        {count === 8 && <Grupos group={group}/>}
-          <Sorteio
+        </form> }
+        {count === 8 && <Grupos group={group}
+                                group2={group2}
+                                group3={group3}
+                                group4={group4}
+                                group5={group5}
+                                group6={group6}
+                                group7={group7}
+                                group8={group8}
+                                time={time}
+                                time2={time2}
+                                time3={time3}
+                                time4={time4}
+                                time5={time5}
+                                time6={time6}
+                                time7={time7}
+                                time8={time8}
+        />}
+          {show ? <Sorteio
             pickedPlayer1={pickedPlayer1}
             pickedPlayer2={pickedPlayer2}
-          />
-          <Selecao
+          /> : null}
+          {show ? <Selecao
             pickedCategory={pickedCategory}
-          />
+          /> : null }
     </div>
   );
 }

@@ -40,7 +40,7 @@
 @media screen and (max-width: 600px) {
   .App{
     background: linear-gradient(black, rgb(202, 38, 38));
-    height: 700px;
+    height: 1500px;
   }
 
   .nav{
@@ -55,6 +55,7 @@
 
 
   .player-container{
+    height: 1000px;
     color: white;
     flex-direction: column;
     width: 100%;

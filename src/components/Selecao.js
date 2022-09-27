@@ -4,6 +4,7 @@ import inglaterra from '../inglaterra.png'
 import brasil from '../brasil.png'
 import alemanha from '../alemanha.png'
 import croacia from '../croacia.png'
+import argentina from '../argentina.png'
 
 const Selecao = ({pickedCategory}) => {
   return (
@@ -22,6 +23,10 @@ const Selecao = ({pickedCategory}) => {
         {
           pickedCategory === 'Croácia' &&
           <img src={croacia} />
+        }
+        {
+          pickedCategory === 'Argentina' &&
+          <img src={argentina} />
         }
     </div>
   )
