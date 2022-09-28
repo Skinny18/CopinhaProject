@@ -1,16 +1,18 @@
 import { useState, useCallback, useEffect } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import Selecao from './components/Selecao';
 import Sorteio from './components/Sorteio';
 import copa from './copa.jpeg'
 
-import { playerList, playerList2, selecaoList} from './db';
 import Grupos from './pages/Grupos';
 
 
 function App() {
+  const playerList = ["Hudson", "Edson", "Barriga", "Valdercley", "Matheus Cabeça", "Ayrton", "João Messi", "Kauã"]
+  const playerList2 = ["Rian", "Leonardo", "Bryan", "João Vitor", "Lucas Matheus", "Biel", "Fellipe", "Thiago Silva"]
+  const selecaoList = ["Brasil", "Argentina", "Alemanha", "França", "Inglaterra", "Nigéria", "Costa Rica", "Croácia"] 
+
 
   const[group, setGroup] = useState([])
   const[group2, setGroup2] = useState([])
@@ -46,34 +48,38 @@ function App() {
 
   const pickPlayerAndTime = useCallback(() => {
     //Sorteio de Jogador 01
-    const player1 = Object.keys(words)
-    const jogador1 = player1[Math.floor(Math.random() * Object.keys(player1).length)]
+    const jogador1 = playerList[Math.floor(Math.random() * playerList.length)]
     //Sorteio de Jogador 02
-    const player2 = Object.keys(words2)
-    const jogador2 = player2[Math.floor(Math.random() * Object.keys(player2).length)]
+    const jogador2 = playerList2[Math.floor(Math.random() * playerList2.length)]
 
-    const player01 = words[jogador1][Math.floor(Math.random() * words[jogador1].length)]
-    const player02 = words2[jogador2][Math.floor(Math.random() * words2[jogador2].length)]
+    const player01 = jogador1
+    const player02 = jogador2
     
 
-    const selecao = Object.keys(words3)
-    const time = selecao[Math.floor(Math.random() * Object.keys(selecao).length)]
+    const time = selecaoList[Math.floor(Math.random() * selecaoList.length)]
 
-    const times = words3[time][Math.floor(Math.random() * words3[time].length)]
+    const times = time
+
 
     return{jogador1, player01, player02, jogador2, times}
   }, [words, words2, words3])
+
+  
 
   const startRandom = useCallback(() => {
 
     const {player01, player02, times} = pickPlayerAndTime()
 
+
     setPickedPlayer(player01)
     setPickedPlayer2(player02)
     setPickedCategory(times)
 
+
+
   }, [pickPlayerAndTime])
 
+  
   useEffect(() => {
     startRandom()
     if(count === 8 ){
@@ -85,8 +91,8 @@ function App() {
     e.preventDefault()
     setCount(count + 1)
     startRandom()
+
   }
-  console.log(count)
   
   const countChange = (e) => {
     e.preventDefault()
@@ -103,6 +109,7 @@ useEffect(() => {
   if(count === 2){
     setGroup2([pickedPlayer1, pickedPlayer2])
     setTime2(pickedCategory)
+
   }
 
   if(count === 3){
@@ -120,19 +127,19 @@ useEffect(() => {
   }
   if(count === 6){
     setGroup6([pickedPlayer1, pickedPlayer2])
-    setTime5(pickedCategory)
+    setTime6(pickedCategory)
   }
 
   if(count === 7){
     setGroup7([pickedPlayer1, pickedPlayer2])
-    setTime6(pickedCategory)
+    setTime7(pickedCategory)
   }
 
   if(count === 8 ){
     setGroup8([pickedPlayer1, pickedPlayer2])
     setTime8(pickedCategory)
   }
-}
+}, [count]
 )
 useEffect(() => { 
   if(count === 8 ){
