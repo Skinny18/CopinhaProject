@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { playerList, playerList2, selecaoList } from "./database/playersData";
 import './App.css';
 import copa from './copa.jpeg'
+import { Link } from "react-router-dom";
 
 
 const App2 = () => {
@@ -16,7 +17,7 @@ const App2 = () => {
     const [count, setCount] = useState(0)
 
     const randomizeTeams = () => {
-        setCount(1)
+        setCount(count + 1)
         const newTeams = [];
 
         for(let i = 0; i < 8; i++) {
@@ -58,8 +59,16 @@ const App2 = () => {
          var gb = newTeams.splice(0)
          let timesB = gb
          setGroupb([...timesB])
+        
+    }     
 
-    }
+
+    var A = groupa.slice(3)
+
+    var B = groupb.slice(-1)
+
+    console.log(A)
+    console.log(B)
 
     useEffect(() => {
         console.log(teams);
@@ -67,9 +76,10 @@ const App2 = () => {
         console.log(groupb)
     }, [teams, groupa, groupb])
 
+      
+
     return (
         <div className="App">
-            
          <nav className='nav'>
              <img src={copa} />
         </nav>
@@ -142,7 +152,29 @@ const App2 = () => {
                             </p>
                         ))
                     }    
-                </details>            
+                </details>   
+                <h1>Primeiro Jogo</h1>
+                <details>
+                    {
+                        A.map((jg, i) => (
+                            <p key={i}>
+                                <h1>Jogo {count}</h1>
+                                <h3>{jg.gp}</h3>
+                                <h3>{jg.bp}</h3>
+                                <h3>{jg.sl}</h3>
+                            </p>
+                        ))
+                    }X
+                    {
+                        B.map((jg, i) => (
+                            <p key={i}>
+                                <h3>{jg.gp}</h3>
+                                <h3>{jg.bp}</h3>
+                                <h3>{jg.sl}</h3>
+                            </p>
+                        ))
+                    }
+                </details>
             </div>
         </div>
     );
