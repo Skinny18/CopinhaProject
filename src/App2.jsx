@@ -61,8 +61,8 @@ const App2 = () => {
          setGroupb([...timesB])
         
     }     
-
-
+        
+    
     var A = groupa.slice(3)
 
     var B = groupb.slice(-1)
