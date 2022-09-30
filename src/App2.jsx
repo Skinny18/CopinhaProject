@@ -11,6 +11,8 @@ const App2 = () => {
     const selecao = [...selecaoList]
 
     const [teams, setTeams] = useState([]);
+    const [groupa, setGroupa] = useState([])
+    const [groupb, setGroupb] = useState([])
     const [count, setCount] = useState(0)
 
     const randomizeTeams = () => {
@@ -35,11 +37,35 @@ const App2 = () => {
             selecao.splice(slIndex, 1);
         }
         setTeams([...newTeams]);
+        //var a = newTeams.push(newTeams.splice(4))
+        //setGroupa([...a])
+
+         //const B = []
+           //B.push(newTeams.splice(0))
+         //setGroupb([...B])
+
+
+         //var times = newTeams.push(newTeams.splice(3))
+        
+         //let grupoA = {
+           // gpA: times
+        // }
+         //setGroupa([grupoA])
+         var ga = newTeams.splice(4)
+         let timesA = ga
+         setGroupa([...timesA])
+
+         var gb = newTeams.splice(0)
+         let timesB = gb
+         setGroupb([...timesB])
+
     }
 
     useEffect(() => {
         console.log(teams);
-    }, [teams])
+        console.log(groupa)
+        console.log(groupb)
+    }, [teams, groupa, groupb])
 
     return (
         <div className="App">
@@ -82,7 +108,7 @@ const App2 = () => {
                 </ul>
                 </div>
             }
-
+        
                 {
                     teams.map((team, i) => (
                         <p key={i}>
@@ -93,7 +119,30 @@ const App2 = () => {
                         </p>
                     ))
                 }
-            
+                <h1>Grupo A:</h1>
+                <details>
+                {
+                    groupa.map((grupo, i ) => (
+                        <p key={i}>
+                            <h1>{grupo.gp}</h1>
+                            <h1>{grupo.bp}</h1>
+                            <h2>{grupo.sl}</h2>
+                        </p>
+                    ))
+                }
+                </details>
+                <h1>Grupo B:</h1>
+                <details>
+                    {
+                        groupb.map((grupo, i ) => (
+                            <p key={i}>
+                                <h1>{grupo.gp}</h1>
+                                <h1>{grupo.bp}</h1>
+                                <h2>{grupo.sl}</h2>
+                            </p>
+                        ))
+                    }    
+                </details>            
             </div>
         </div>
     );
